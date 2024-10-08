@@ -64,7 +64,7 @@ public class Card {
             this.display = display;
         };
 
-        public Integer value() {
+        public Integer toInt() {
             return value;
         }
 
@@ -90,7 +90,7 @@ public class Card {
         this.value = value;
     }
 
-    public Suit gesuit() {
+    public Suit geSuit() {
         return suite;
     }
 

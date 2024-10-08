@@ -53,11 +53,15 @@ public abstract class Hand extends FXObservableList<Card> {
     }
 
     public void sortBySuit() {
-        Collections.sort(hand, Comparator.comparing(Card::gesuit));
+        Collections.sort(hand, Comparator.comparing(Card::geSuit));
     }
 
     public void sortByValue() {
         Collections.sort(hand, Comparator.comparing(Card::getValue));
+    }
+
+    public void shuffle() {
+        Collections.shuffle(this);
     }
 
     protected abstract int calculate();
