@@ -65,4 +65,4 @@ public abstract class Hand extends FXObservableList<Card> {
     }
 
     protected abstract int calculate();
-git 
+}
