@@ -90,7 +90,7 @@ public class Card {
         this.value = value;
     }
 
-    public Suit geSuit() {
+    public Suit getSuit() {
         return suite;
     }
 
