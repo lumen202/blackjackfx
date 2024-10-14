@@ -3,6 +3,7 @@ module lumen.blackjackfx {
     requires javafx.fxml;
 
     requires core.fx;
+    requires javafx.graphics;
 
     opens dev.lumen to javafx.fxml;
     exports dev.lumen;
