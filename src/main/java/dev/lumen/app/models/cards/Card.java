@@ -3,14 +3,23 @@ package dev.lumen.app.models.cards;
 import java.util.LinkedList;
 import java.util.List;
 
+import dev.lumen.App;
+import dev.sol.ui.scene.control.FXWritableImage;
+import javafx.scene.image.Image;
+
 public class Card {
+    public static final Image ATLAS = new Image(App.class.getResourceAsStream("dev/lumen/asssets/imge/atlas.png"));
+
+    public static final Integer WIDTH = (int) (ATLAS.getWidth() / 13);
+    public static final Integer HEIGHT = (int) (ATLAS.getHeight() / 5);
 
     public static enum Suit {
         CLUBS("Clubs"),
         DIAMONDS("Diamonds"),
         HEARTS("Hearts"),
         SPADES("Spades"),
-        JOKER("Joker");
+        JOKER("Joker"),
+        BACK("Back Card");
 
         private String display;
 
@@ -28,6 +37,7 @@ public class Card {
             list.removeLast();
             return list;
         }
+
     }
 
     public static enum Value {
@@ -46,7 +56,8 @@ public class Card {
         QUEEN("Queen", 12),
         KING("King", 13),
         RED("Joker (Red)", -1),
-        BLACK("Joker (Black)", -1);
+        BLACK("Joker (Black)", -1),
+        NONE("", -1);
 
         private String display;
         private int value;
@@ -82,12 +93,23 @@ public class Card {
         }
     }
 
+    public static enum Face {
+        UP,
+        DOWN;
+    }
+
     private Suit suite;
     private Value value;
+    private Face face;
+
+    public Card() {
+        this(Suit.BACK, Value.NONE);
+    }
 
     public Card(Suit suit, Value value) {
         this.suite = suit;
         this.value = value;
+        face = Face.DOWN;
     }
 
     public Suit getSuit() {
@@ -98,11 +120,38 @@ public class Card {
         return value;
     }
 
+    public void setFace(Face face) {
+        this.face = face;
+    }
+
+    public Face getFace() {
+        return this.face;
+    }
+
     public String display() {
         if (suite == Suit.JOKER) {
             return suite + " " + value;
         }
         return value + " of " + suite;
+    }
+
+    public FXWritableImage draw() {
+        int suit_coordinate = switch (getSuit()) {
+            case JOKER -> 4;
+            case BACK -> 4;
+            default ->
+                face == Face.DOWN ? 4 : getSuit().ordinal();
+        };
+
+        int value_coordinate = switch (getValue()) {
+            case BLACK -> 0;
+            case RED -> 1;
+            case NONE -> 2;
+            default ->
+                face == Face.DOWN ? 2 : getSuit().ordinal();
+        };
+
+        return new FXWritableImage(Card.ATLAS, suit_coordinate, value_coordinate, Card.WIDTH, Card.HEIGHT);
     }
 
 }
