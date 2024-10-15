@@ -11,7 +11,7 @@ public class App extends FXApplication {
     @Override
     public void initialize() throws Exception {
         // TODO : set application params
-        applicationStage.setTitle("Blackjack FX");
+        applicationStage.setTitle("Blackjack-FX");
         applicationScene.getStylesheets().add(FXSkin.NORD_LIGHT.getResource().toExternalForm());
         applicationStage.setResizable(false);
 
@@ -20,8 +20,10 @@ public class App extends FXApplication {
     }
 
     private void _initialize_root() {
-        RootLoader rootLoader = (RootLoader) FXLoader.createInstance("/dev/lumen/ui/root", "RootLoader", "ROOT");
-
+        RootLoader loader = (RootLoader) FXLoader
+                .createInstance(RootLoader.class, App.class.getResource("/dev/lumen/app/root/ROOT.fxml"))
+                .initialize();
+        loader.load(applicationScene);
 
     }
 

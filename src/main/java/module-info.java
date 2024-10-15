@@ -6,5 +6,7 @@ module lumen.blackjackfx {
     requires javafx.graphics;
 
     opens dev.lumen to javafx.fxml;
+
     exports dev.lumen;
+    exports dev.lumen.app.root;
 }
