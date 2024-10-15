@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1470.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1470.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lumen.app.board.BoardController">
    <children>
-      <ImageView fitHeight="745.0" fitWidth="1470.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="745.0" fitWidth="1570.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assets/img/table.png" />
          </image>
@@ -21,12 +20,12 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="872.0" translateY="44.0" width="135.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="668.0" translateY="44.0" width="135.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="461.0" translateY="44.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="1074.0" translateY="400.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="872.0" translateY="400.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="668.0" translateY="400.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="461.0" translateY="400.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="260.0" translateY="400.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5eff4c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="26.0" translateY="222.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="1074.0" translateY="400.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutY="400.0" stroke="BLACK" strokeType="INSIDE" translateX="872.0" translateY="76.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="668.0" translateY="400.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="7.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="461.0" translateY="400.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="260.0" translateY="400.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5eff4c9" height="178.0" layoutX="-1.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" translateX="26.0" translateY="222.0" width="135.0" />
          </children>
       </AnchorPane>
    </children>

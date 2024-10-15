@@ -5,9 +5,13 @@ import java.util.List;
 
 import dev.lumen.App;
 import dev.sol.ui.scene.control.FXWritableImage;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
-public class Card {
+public class Card extends StackPane {
     public static final Image ATLAS = new Image(App.class.getResourceAsStream("dev/lumen/asssets/imge/atlas.png"));
 
     public static final Integer WIDTH = (int) (ATLAS.getWidth() / 13);
@@ -98,49 +102,33 @@ public class Card {
         DOWN;
     }
 
-    private Suit suite;
-    private Value value;
-    private Face face;
+    private ObjectProperty<Suit> suite;
+    private ObjectProperty<Value> value;
+    private ObjectProperty<Face> face;
+
+    private ImageView back;
+    private ImageView front;
 
     public Card() {
         this(Suit.BACK, Value.NONE);
     }
 
-    public Card(Suit suit, Value value) {
-        this.suite = suit;
-        this.value = value;
-        face = Face.DOWN;
+    public Card(Suit suite, Value value) {
+        this.suite = new SimpleObjectProperty<>(suite);
+        this.value = new SimpleObjectProperty<>(value);
+        this.face = new SimpleObjectProperty<>(Face.DOWN);
+
+        back = new ImageView(new FXWritableImage(Card.ATLAS, Card.WIDTH * 2, Card.HEIGHT * 4, Card.WIDTH, Card.HEIGHT));
+        front = new ImageView(_render_frontcard());
+        getChildren().addAll(back, front);
     }
 
-    public Suit getSuit() {
-        return suite;
-    }
-
-    public Value getValue() {
-        return value;
-    }
-
-    public void setFace(Face face) {
-        this.face = face;
-    }
-
-    public Face getFace() {
-        return this.face;
-    }
-
-    public String display() {
-        if (suite == Suit.JOKER) {
-            return suite + " " + value;
-        }
-        return value + " of " + suite;
-    }
-
-    public FXWritableImage draw() {
+    public FXWritableImage _render_frontcard() {
         int suit_coordinate = switch (getSuit()) {
             case JOKER -> 4;
             case BACK -> 4;
             default ->
-                face == Face.DOWN ? 4 : getSuit().ordinal();
+                getFace() == Face.DOWN ? HEIGHT * 4 : getSuit().ordinal();
         };
 
         int value_coordinate = switch (getValue()) {
@@ -148,10 +136,45 @@ public class Card {
             case RED -> 1;
             case NONE -> 2;
             default ->
-                face == Face.DOWN ? 2 : getSuit().ordinal();
+                getFace() == Face.DOWN ? WIDTH * 2 : getSuit().ordinal();
         };
 
         return new FXWritableImage(Card.ATLAS, suit_coordinate, value_coordinate, Card.WIDTH, Card.HEIGHT);
+    }
+
+    public ObjectProperty<Suit> getSuitProperty() {
+        return this.suite;
+    }
+
+    public Suit getSuit() {
+        return this.suite.get();
+    }
+
+    public ObjectProperty<Value> getValueProperty() {
+        return this.value;
+    }
+
+    public Value getValue() {
+        return this.value.get();
+    }
+
+    public ObjectProperty<Face> getFaceProperty() {
+        return this.face;
+    }
+
+    public Face getFace() {
+        return this.face.get();
+    }
+
+    public void setFace(Face face) {
+        this.face.set(face);
+    }
+
+    public String display() {
+        if (getSuit() == Suit.JOKER) {
+            return suite + " " + value;
+        }
+        return value + " of " + suite;
     }
 
 }
