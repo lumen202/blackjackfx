@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1470.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lumen.app.board.BoardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lumen.app.board.BoardController">
    <children>
-      <ImageView fitHeight="745.0" fitWidth="1570.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="750.0" fitWidth="500.0">
          <image>
             <Image url="@../../assets/img/table.png" />
          </image>
       </ImageView>
       <AnchorPane>
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="260.0" translateY="44.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb921c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="1074.0" translateY="44.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="872.0" translateY="44.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="668.0" translateY="44.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="461.0" translateY="44.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" layoutX="346.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
-            <StackPane fx:id="deckContainer" layoutX="643.0" layoutY="27.0" prefHeight="178.0" prefWidth="128.0" translateX="25.0" translateY="228.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" layoutX="75.0" layoutY="-30.0" stroke="BLACK" strokeType="INSIDE" translateX="260.0" translateY="44.0" width="135.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="28.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
+            <StackPane fx:id="deckContainer" layoutX="183.0" layoutY="286.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5eff4c9" height="178.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
                </children>
             </StackPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="260.0" layoutY="486.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="668.0" layoutY="486.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="875.0" layoutY="486.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="1074.0" layoutY="486.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="461.0" layoutY="486.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
-            <VBox fx:id="buttonContainer" layoutX="830.0" layoutY="271.0" prefHeight="145.0" prefWidth="112.0" spacing="20.0">
+            <VBox fx:id="buttonContainer" layoutX="347.0" layoutY="309.0" prefHeight="145.0" prefWidth="112.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="109.0" text="Hit">
                      <graphic>
-                        <FontIcon iconLiteral="fas-hand-pointer" iconSize="37" />
+                        <FontIcon iconLiteral="mdi2c-cards-playing-outline" iconSize="37" />
                      </graphic>
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -47,7 +43,7 @@
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="109.0" text="Stand">
                      <graphic>
-                        <FontIcon iconLiteral="fas-hand-rock" iconSize="37" />
+                        <FontIcon iconLiteral="mdi2c-cards" iconSize="37" />
                      </graphic>
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -55,9 +51,9 @@
                   </Button>
                </children>
             </VBox>
-            <VBox layoutX="550.0" layoutY="309.0">
+            <VBox layoutX="55.0" layoutY="339.0">
                <children>
-                  <Button fx:id="startButton" mnemonicParsing="false" text="Start">
+                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#handleStart" text="Start">
                      <graphic>
                         <FontIcon iconLiteral="fas-play" iconSize="40" />
                      </graphic>
@@ -67,7 +63,198 @@
                   </Button>
                </children>
             </VBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="1007.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
+            <VBox fx:id="bankerHandInfoContainer" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="109.0">
+               <children>
+                  <Label text="Banker">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="179.0" prefWidth="124.0">
+                     <content>
+                        <VBox prefHeight="377.0" prefWidth="141.0">
+                           <children>
+                              <Label styleClass="area-legend-symbol" text="Ace of Hearts" textFill="#fc0000">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Two of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Three of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Four of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Five of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Six of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Seven of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Eight of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Nine of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Ten of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Jack of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Queen of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="King of Hearts" textFill="#f81212">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </content>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </ScrollPane>
+                  <HBox prefHeight="62.0" prefWidth="109.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Points : ">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="26.0" prefWidth="8.0" />
+                        <Label alignment="CENTER_RIGHT" text="25" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="playerHandInfoContainer" layoutX="377.0" layoutY="536.0" prefHeight="200.0" prefWidth="109.0">
+               <children>
+                  <Label text="Player">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="179.0" prefWidth="124.0">
+                     <content>
+                        <VBox prefHeight="377.0" prefWidth="141.0">
+                           <children>
+                              <Label styleClass="area-legend-symbol" text="Ace of Hearts" textFill="#fc0000">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Two of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Three of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Four of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Five of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Six of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Seven of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Eight of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Nine of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Ten of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Jack of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="Queen of Hearts">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="area-legend-symbol" text="King of Hearts" textFill="#f81212">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </content>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </ScrollPane>
+                  <HBox prefHeight="62.0" prefWidth="109.0">
+                     <children>
+                        <Label text="Points : ">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="26.0" prefWidth="8.0" />
+                        <Label alignment="CENTER_RIGHT" text="25" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>

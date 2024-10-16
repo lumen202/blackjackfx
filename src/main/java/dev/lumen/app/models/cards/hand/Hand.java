@@ -43,7 +43,7 @@ public abstract class Hand extends FXObservableList<Card> {
     }
 
     public void clear(Deck deck) {
-        deck.getCards().addAll(hand);
+        deck.returnCards(this);
         hand.clear();
 
     }

@@ -11,7 +11,7 @@ public class App extends FXApplication {
     @Override
     public void initialize() throws Exception {
         applicationStage.setTitle("Blackjack-FX");
-        applicationScene.getStylesheets().add(FXSkin.PRIMER_DARK.getResource().toExternalForm());
+        applicationScene.getStylesheets().add(FXSkin.DRACULA.getResource().toExternalForm());
         applicationStage.setResizable(false);
 
         _initialize_root();
