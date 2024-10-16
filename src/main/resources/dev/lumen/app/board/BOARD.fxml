@@ -25,7 +25,11 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="668.0" translateY="400.0" width="135.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="7.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="461.0" translateY="400.0" width="135.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" translateX="260.0" translateY="400.0" width="135.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5eff4c9" height="178.0" layoutX="-1.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" translateX="26.0" translateY="222.0" width="135.0" />
+            <StackPane fx:id="deckContainer" layoutX="-3.0" layoutY="4.0" translateX="25.0" translateY="228.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5eff4c9" height="178.0" stroke="BLACK" strokeType="INSIDE" translateX="25.0" translateY="228.0" width="135.0" />
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
    </children>

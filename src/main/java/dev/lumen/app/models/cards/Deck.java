@@ -3,7 +3,6 @@ package dev.lumen.app.models.cards;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -18,26 +17,30 @@ public class Deck implements ObservableList<Card> {
     private Boolean includeJokers;
 
     public Deck() {
-        this(false);
+        this(false, Card.WIDTH);
 
     }
 
-    public Deck(boolean includeJokers) {
+    public Deck(int custom_width) {
+        this(false, custom_width);
+    }
+
+    public Deck(boolean includeJokers, int custom_width) {
         cardList = FXCollections.observableArrayList();
         this.includeJokers = includeJokers;
-        initialize();
+        initialize(custom_width);
     }
 
-    public void initialize() {
+    public void initialize(int custom_width) {
         Card.Suit.LIST().forEach(suit -> {
             Card.Value.LIST().forEach(value -> {
-                cardList.add(new Card(suit, value));
+                cardList.add(new Card(suit, value, custom_width));
             });
         });
 
         if (includeJokers) {
-            cardList.add(new Card(Card.Suit.JOKER, Card.Value.RED));
-            cardList.add(new Card(Card.Suit.JOKER, Card.Value.BLACK));
+            cardList.add(new Card(Card.Suit.JOKER, Card.Value.RED, custom_width));
+            cardList.add(new Card(Card.Suit.JOKER, Card.Value.BLACK, custom_width));
         }
 
     }

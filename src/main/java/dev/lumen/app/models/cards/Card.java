@@ -12,7 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 public class Card extends StackPane {
-    public static final Image ATLAS = new Image(App.class.getResourceAsStream("dev/lumen/asssets/imge/atlas.png"));
+    public static final Image ATLAS = new Image(
+            App.class.getResource("/dev/lumen/assets/img/atlas.png").toExternalForm());
 
     public static final Integer WIDTH = (int) (ATLAS.getWidth() / 13);
     public static final Integer HEIGHT = (int) (ATLAS.getHeight() / 5);
@@ -105,21 +106,25 @@ public class Card extends StackPane {
     private ObjectProperty<Suit> suite;
     private ObjectProperty<Value> value;
     private ObjectProperty<Face> face;
-
+    private int custom_width;
     private ImageView back;
     private ImageView front;
 
     public Card() {
-        this(Suit.BACK, Value.NONE);
+        this(Suit.BACK, Value.NONE, Card.WIDTH);
     }
 
-    public Card(Suit suite, Value value) {
+    public Card(Suit suite, Value value, int custom_witdh) {
         this.suite = new SimpleObjectProperty<>(suite);
         this.value = new SimpleObjectProperty<>(value);
         this.face = new SimpleObjectProperty<>(Face.DOWN);
 
         back = new ImageView(new FXWritableImage(Card.ATLAS, Card.WIDTH * 2, Card.HEIGHT * 4, Card.WIDTH, Card.HEIGHT));
+        back.setFitWidth(custom_witdh);
+        back.setPreserveRatio(true);
         front = new ImageView(_render_frontcard());
+        front.setFitWidth(custom_witdh);
+        front.setPreserveRatio(true);
         getChildren().addAll(back, front);
     }
 
