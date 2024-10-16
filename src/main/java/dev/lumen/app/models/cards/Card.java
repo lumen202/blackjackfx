@@ -125,7 +125,7 @@ public class Card extends StackPane {
         front = new ImageView(_render_frontcard());
         front.setFitWidth(custom_witdh);
         front.setPreserveRatio(true);
-        getChildren().addAll(back, front);
+        getChildren().addAll(front, back);
     }
 
     public FXWritableImage _render_frontcard() {
