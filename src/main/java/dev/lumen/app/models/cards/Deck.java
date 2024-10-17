@@ -57,17 +57,26 @@ public class Deck extends FXObservableList<Card> {
         addAll(card);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<Card> deal(int amount) {
-        List<Card> cards = new LinkedList();
+        List<Card> cards = new LinkedList<>();
         if (size() < amount) {
             cards.addAll(this);
+            clear();
         } else {
             for (int i = 0; i < amount; i++) {
                 cards.add(removeLast());
             }
         }
         return cards;
+    }
+
+    public Card deal(Card.Face face) {
+        if (isEmpty()) {
+            return null;
+        }
+        Card card = removeLast();
+        card.setFace(face);
+        return card;
     }
 
     public Card deal() {

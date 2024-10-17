@@ -2,6 +2,7 @@ package dev.lumen.app.board;
 
 import dev.lumen.app.models.cards.Card;
 import dev.lumen.app.models.cards.Deck;
+import dev.lumen.app.models.cards.Card.Face;
 import dev.lumen.app.models.cards.hand.Hand;
 import dev.lumen.app.models.cards.hand.ruleset.BlackjackRuleSet;
 import dev.sol.base.collections.FXObservableMappedList;
@@ -61,13 +62,16 @@ public class BoardController extends FXController {
         deck.shuffle();
 
         player = new BlackjackRuleSet();
-        player.addAll(deck.deal(2));
+        player.add(deck.deal(Face.UP));
+        player.add(deck.deal(Face.UP));
+
 
         banker = new BlackjackRuleSet();
-        banker.addAll(deck.deal(2));
+        banker.add(deck.deal(Face.UP));
+        banker.addAll(deck.deal());
 
         playerHandInfoDisplay = new FXObservableMappedList<>(player, card -> {
-            Label label = new Label(card.display());
+            Label label = card.labelDisplay();
 
             StackPane pane = new StackPane(label);
             StackPane.setAlignment(label, Pos.CENTER_RIGHT);
@@ -76,7 +80,7 @@ public class BoardController extends FXController {
         });
 
         bankerHandInfoDisplay = new FXObservableMappedList<>(banker, card -> {
-            Label label = new Label(card.display());
+            Label label = card.labelDisplay();
 
             StackPane pane = new StackPane(label);
             StackPane.setAlignment(label, Pos.CENTER_RIGHT);

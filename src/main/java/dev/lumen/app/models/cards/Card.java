@@ -1,5 +1,6 @@
 package dev.lumen.app.models.cards;
 
+import java.text.NumberFormat.Style;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,14 +9,17 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.materialdesign2.MaterialDesignC;
 import org.kordamp.ikonli.materialdesign2.MaterialDesignE;
 
+import atlantafx.base.theme.Styles;
 import dev.lumen.App;
 import dev.sol.ui.scene.control.FXWritableImage;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 public class Card extends StackPane {
@@ -197,13 +201,26 @@ public class Card extends StackPane {
         return value + " of " + suite;
     }
 
-    public TextFlow textDisplay() {
-        TextFlow display = new TextFlow();
-
+    public Label labelDisplay() {
         FontIcon ikon = new FontIcon();
-        Label ikonLabel = new Label();
+        ikon.setIconSize(20);
+        ikon.setWrappingWidth(30);
+        ikon.setTextAlignment(TextAlignment.RIGHT);
 
-        // Label valueLable = new Label(value.get());
+        Label display = new Label();
+        display.setContentDisplay(ContentDisplay.RIGHT);
+        display.getStyleClass().add(Styles.TEXT_BOLD);
+        display.setGraphic(ikon);
+
+
+        if (getFace() == Face.DOWN) {
+            ikon.setIconCode(MaterialDesignC.CARDS);
+            display.setText("?");
+        } else {
+            ikon.setIconCode(getSuit().getIkon());
+            display.setText(getValue().toString());
+
+        }
 
         return display;
     }
