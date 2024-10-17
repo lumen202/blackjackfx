@@ -63,7 +63,7 @@
                   </Button>
                </children>
             </VBox>
-            <VBox fx:id="bankerHandInfoContainer" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="109.0">
+            <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="109.0">
                <children>
                   <Label text="Banker">
                      <font>
@@ -72,7 +72,7 @@
                   </Label>
                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="179.0" prefWidth="124.0">
                      <content>
-                        <VBox prefHeight="377.0" prefWidth="141.0">
+                        <VBox fx:id="bankerHandInfoContainer" prefHeight="377.0" prefWidth="141.0">
                            <children>
                               <Label styleClass="area-legend-symbol" text="Ace of Hearts" textFill="#fc0000">
                                  <font>
@@ -159,7 +159,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="playerHandInfoContainer" layoutX="377.0" layoutY="536.0" prefHeight="200.0" prefWidth="109.0">
+            <VBox layoutX="377.0" layoutY="536.0" prefHeight="200.0" prefWidth="109.0">
                <children>
                   <Label text="Player">
                      <font>
@@ -168,7 +168,7 @@
                   </Label>
                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="179.0" prefWidth="124.0">
                      <content>
-                        <VBox prefHeight="377.0" prefWidth="141.0">
+                        <VBox fx:id="playerHandInfoContainer" prefHeight="377.0" prefWidth="141.0">
                            <children>
                               <Label styleClass="area-legend-symbol" text="Ace of Hearts" textFill="#fc0000">
                                  <font>

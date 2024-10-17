@@ -58,9 +58,13 @@ public class BoardController extends FXController {
     @Override
     protected void load_fields() {
         deck = new Deck(135);
+        deck.shuffle();
 
         player = new BlackjackRuleSet();
+        player.addAll(deck.deal(2));
+
         banker = new BlackjackRuleSet();
+        banker.addAll(deck.deal(2));
 
         playerHandInfoDisplay = new FXObservableMappedList<>(player, card -> {
             Label label = new Label(card.display());
@@ -71,7 +75,7 @@ public class BoardController extends FXController {
             return pane;
         });
 
-       bankerHandInfoDisplay = new FXObservableMappedList<>(banker, card -> {
+        bankerHandInfoDisplay = new FXObservableMappedList<>(banker, card -> {
             Label label = new Label(card.display());
 
             StackPane pane = new StackPane(label);
@@ -80,13 +84,14 @@ public class BoardController extends FXController {
             return pane;
         });
 
-
         started = new SimpleBooleanProperty();
     }
 
     @Override
     protected void load_bindings() {
         Bindings.bindContent(deckContainer.getChildren(), deck);
+        Bindings.bindContent(playerHandInfoContainer.getChildren(), playerHandInfoDisplay);
+        Bindings.bindContent(bankerHandInfoContainer.getChildren(), bankerHandInfoDisplay);
     }
 
     @Override

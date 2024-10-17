@@ -3,13 +3,20 @@ package dev.lumen.app.models.cards;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.kordamp.ikonli.Ikon;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.kordamp.ikonli.materialdesign2.MaterialDesignC;
+import org.kordamp.ikonli.materialdesign2.MaterialDesignE;
+
 import dev.lumen.App;
 import dev.sol.ui.scene.control.FXWritableImage;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextFlow;
 
 public class Card extends StackPane {
     public static final Image ATLAS = new Image(
@@ -19,17 +26,24 @@ public class Card extends StackPane {
     public static final Integer HEIGHT = (int) (ATLAS.getHeight() / 5);
 
     public static enum Suit {
-        CLUBS("Clubs"),
-        DIAMONDS("Diamonds"),
-        HEARTS("Hearts"),
-        SPADES("Spades"),
-        JOKER("Joker"),
-        BACK("Back Card");
+        CLUBS("Clubs", MaterialDesignC.CARDS_CLUB),
+        DIAMONDS("Diamonds", MaterialDesignC.CARDS_DIAMOND),
+        HEARTS("Hearts", MaterialDesignC.CARDS_HEART),
+        SPADES("Spades", MaterialDesignC.CARDS_SPADE),
+        JOKER("Joker", MaterialDesignE.EMOTICON_HAPPY),
+        BACK("Back Card", MaterialDesignC.CARDS);
 
         private String display;
+        private Ikon ikon;
 
-        private Suit(String display) {
+        private Suit(String display, Ikon ikon) {
             this.display = display;
+            this.ikon = ikon;
+
+        }
+
+        public Ikon getIkon() {
+            return this.ikon;
         }
 
         @Override
@@ -106,6 +120,7 @@ public class Card extends StackPane {
     private ObjectProperty<Suit> suite;
     private ObjectProperty<Value> value;
     private ObjectProperty<Face> face;
+    @SuppressWarnings("unused")
     private int custom_width;
     private ImageView back;
     private ImageView front;
@@ -180,6 +195,17 @@ public class Card extends StackPane {
             return suite + " " + value;
         }
         return value + " of " + suite;
+    }
+
+    public TextFlow textDisplay() {
+        TextFlow display = new TextFlow();
+
+        FontIcon ikon = new FontIcon();
+        Label ikonLabel = new Label();
+
+        // Label valueLable = new Label(value.get());
+
+        return display;
     }
 
 }

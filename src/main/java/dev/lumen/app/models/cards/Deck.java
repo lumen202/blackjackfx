@@ -2,6 +2,7 @@ package dev.lumen.app.models.cards;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.LinkedList;
 import dev.sol.base.collections.FXObservableList;
 
 public class Deck extends FXObservableList<Card> {
@@ -24,7 +25,13 @@ public class Deck extends FXObservableList<Card> {
 
     public void initialize(int custom_width) {
         Card.Suit.LIST().forEach(suit -> {
+            if (suit == Card.Suit.JOKER) {
+                return;
+            }
             Card.Value.LIST().forEach(value -> {
+                if (value == Card.Value.RED) {
+                    return;
+                }
                 add(new Card(suit, value, custom_width));
             });
         });
@@ -50,6 +57,19 @@ public class Deck extends FXObservableList<Card> {
         addAll(card);
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public List<Card> deal(int amount) {
+        List<Card> cards = new LinkedList();
+        if (size() < amount) {
+            cards.addAll(this);
+        } else {
+            for (int i = 0; i < amount; i++) {
+                cards.add(removeLast());
+            }
+        }
+        return cards;
+    }
+
     public Card deal() {
         return isEmpty() ? null : removeLast();
     }
@@ -57,6 +77,5 @@ public class Deck extends FXObservableList<Card> {
     public Integer cardsLeft() {
         return this.size();
     }
-
 
 }
