@@ -1,5 +1,7 @@
 package dev.lumen.app.board;
 
+import java.util.List;
+
 import dev.lumen.app.models.cards.Card;
 import dev.lumen.app.models.cards.Deck;
 import dev.lumen.app.models.cards.Card.Face;
@@ -10,15 +12,20 @@ import dev.sol.core.controller.FXController;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class BoardController extends FXController {
+
+    @FXML
+    private AnchorPane board;
 
     @FXML
     private StackPane deckContainer;
@@ -35,8 +42,25 @@ public class BoardController extends FXController {
     private VBox bankerHandInfoContainer;
 
     @FXML
+    private VBox playerInfoContainer;
+
+    @FXML
+    private VBox bankerInfoContainer;
+
+    @FXML
     private void handleStart() {
+
+        shuffle_deck();
+
+        player.add(deck.deal(Face.UP));
+        player.add(deck.deal(Face.UP));
+
+        banker.add(deck.deal(Face.UP));
+        banker.add(deck.deal(Face.UP));
+
+        banker.addAll(deck.deal());
         started.set(true);
+
     };
 
     @FXML
@@ -59,16 +83,9 @@ public class BoardController extends FXController {
     @Override
     protected void load_fields() {
         deck = new Deck(135);
-        deck.shuffle();
 
         player = new BlackjackRuleSet();
-        player.add(deck.deal(Face.UP));
-        player.add(deck.deal(Face.UP));
-
-
         banker = new BlackjackRuleSet();
-        banker.add(deck.deal(Face.UP));
-        banker.addAll(deck.deal());
 
         playerHandInfoDisplay = new FXObservableMappedList<>(player, card -> {
             Label label = card.labelDisplay();
@@ -92,17 +109,43 @@ public class BoardController extends FXController {
     }
 
     @Override
+
     protected void load_bindings() {
-        Bindings.bindContent(deckContainer.getChildren(), deck);
+
         Bindings.bindContent(playerHandInfoContainer.getChildren(), playerHandInfoDisplay);
         Bindings.bindContent(bankerHandInfoContainer.getChildren(), bankerHandInfoDisplay);
-    }
 
-    @Override
-    protected void load_listeners() {
+        playerInfoContainer.visibleProperty().bind(started);
+        bankerInfoContainer.visibleProperty().bind(started);
+
         startButton.disableProperty().bind(started);
         buttonContainer.disableProperty().bind(started.not());
 
     }
 
+    @Override
+    protected void load_listeners() {
+        player.addListener((ListChangeListener<Card>) change -> {
+            while (change.next()) {
+                    Card card = change.getList().get(change.getFrom());
+                if (change.wasPermutated()) {
+
+                } else {
+                    if (change.wasRemoved()) {
+
+                    }
+                    if (change.wasAdded()) {
+                      
+                    }
+                }
+            }
+
+        });
+    }
+
+    public void shuffle_deck() {
+        Bindings.unbindContent(deckContainer.getChildren(), deck);
+        deck.shuffle();
+        Bindings.bindContent(deckContainer.getChildren(), deck);
+    }
 }

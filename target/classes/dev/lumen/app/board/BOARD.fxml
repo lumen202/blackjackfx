@@ -22,7 +22,7 @@
             <Image url="@../../assets/img/table.png" />
          </image>
       </ImageView>
-      <AnchorPane>
+      <AnchorPane fx:id="board">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbc21c9" height="178.0" layoutX="75.0" layoutY="-30.0" stroke="BLACK" strokeType="INSIDE" translateX="260.0" translateY="44.0" width="135.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21c6ffc9" height="178.0" layoutX="28.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" width="135.0" />
@@ -63,12 +63,15 @@
                   </Button>
                </children>
             </VBox>
-            <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="109.0">
+            <VBox fx:id="bankerInfoContainer" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="109.0">
                <children>
                   <Label text="Banker">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
+                     <graphic>
+                        <FontIcon iconLiteral="mdi2a-account" iconSize="23" />
+                     </graphic>
                   </Label>
                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="179.0" prefWidth="124.0">
                      <content>
@@ -152,19 +155,25 @@
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
+                           <graphic>
+                              <FontIcon iconLiteral="mdi2s-star-four-points" />
+                           </graphic>
                         </Label>
-                        <Region prefHeight="26.0" prefWidth="8.0" />
+                        <Region prefHeight="30.0" prefWidth="5.0" />
                         <Label alignment="CENTER_RIGHT" text="25" />
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="377.0" layoutY="536.0" prefHeight="200.0" prefWidth="109.0">
+            <VBox fx:id="playerInfoContainer" layoutX="377.0" layoutY="536.0" prefHeight="200.0" prefWidth="109.0">
                <children>
                   <Label text="Player">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
+                     <graphic>
+                        <FontIcon iconLiteral="mdi2a-account" iconSize="23" />
+                     </graphic>
                   </Label>
                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="179.0" prefWidth="124.0">
                      <content>
@@ -248,8 +257,11 @@
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
+                           <graphic>
+                              <FontIcon iconLiteral="mdi2s-star-four-points" />
+                           </graphic>
                         </Label>
-                        <Region prefHeight="26.0" prefWidth="8.0" />
+                        <Region prefHeight="30.0" prefWidth="7.0" />
                         <Label alignment="CENTER_RIGHT" text="25" />
                      </children>
                   </HBox>

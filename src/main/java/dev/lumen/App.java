@@ -2,8 +2,9 @@ package dev.lumen;
 
 import dev.lumen.app.root.RootLoader;
 import dev.sol.app.FXApplication;
+import dev.sol.base.scene.FXSkin;
 import dev.sol.core.view.FXLoader;
-import dev.sol.theme.FXSkin;
+
 
 public class App extends FXApplication {
 

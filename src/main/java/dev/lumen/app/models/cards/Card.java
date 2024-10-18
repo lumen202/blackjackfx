@@ -20,7 +20,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.text.TextFlow;
 
 public class Card extends StackPane {
     public static final Image ATLAS = new Image(
@@ -144,7 +143,7 @@ public class Card extends StackPane {
         front = new ImageView(_render_frontcard());
         front.setFitWidth(custom_witdh);
         front.setPreserveRatio(true);
-        getChildren().addAll(front, back);
+        getChildren().addAll(front,back);
     }
 
     public FXWritableImage _render_frontcard() {
@@ -204,7 +203,6 @@ public class Card extends StackPane {
     public Label labelDisplay() {
         FontIcon ikon = new FontIcon();
         ikon.setIconSize(20);
-        ikon.setWrappingWidth(30);
         ikon.setTextAlignment(TextAlignment.RIGHT);
 
         Label display = new Label();
